@@ -1,7 +1,5 @@
 
 int pin_led = 7;
-int pin_button = 8;
-int lettura = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -11,11 +9,16 @@ void setup() {
 
 void loop() {
 
+  String command = Serial.readString();
+
+  if(command == "accendi"){
+    // accendo il led
+    digitalWrite(pin_led,HIGH);
+  } else if(command == "spegni") {
+    // spengo il led
+    digitalWrite(pin_led,LOW);
+  } else {
+     Serial.println("Comando non riconosciuto");
+  }
   
-
-  Serial.println("ciao");
-  
-
-  // accendo il led
-
 }
